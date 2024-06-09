@@ -1,6 +1,6 @@
 import { ArrowDownIcon } from "@radix-ui/react-icons";
-import { SectionWrapper } from "../SectionWrapper";
-import { TextUp } from "../TextUp";
+import { SectionWrapper } from "../section-wrapper";
+import { TextUp } from "../text-up";
 
 export type PageHeaderProps = {
   title: string;

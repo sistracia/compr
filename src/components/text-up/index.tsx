@@ -27,7 +27,7 @@ export function TextUp({ children }: TextUpProps) {
             <Fragment key={key}>
               <span className="inline-block overflow-hidden">
                 <span
-                  className="inline-block animate-in slide-in-from-bottom duration-500 ease-[cubic-bezier(.25,.13,.19,1)]"
+                  className="inline-block animate-in slide-in-from-bottom duration-500 ease-&lsqb;cubic-bezier(.25,.13,.19,1)&rsqb;"
                   style={{
                     animationDelay: `${100 + 25 * key}ms`,
                   }}

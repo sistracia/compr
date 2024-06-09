@@ -1,8 +1,7 @@
 "use client";
 
-import { clsx } from "clsx";
 import { useEffect, useRef } from "react";
-import { NavBar } from "../NavBar";
+import { NavBar } from "../nav-bar";
 
 export type PageScrollProps = {
   disableEffect?: boolean;
@@ -15,7 +14,6 @@ export function PageScroll({
   children,
   navbarTitle,
   navbarContent,
-  disableEffect = false,
 }: PageScrollProps) {
   const pageContainerRef = useRef<HTMLDivElement>(null);
   const contentContainerRef = useRef<HTMLDivElement>(null);
@@ -23,7 +21,7 @@ export function PageScroll({
 
   useEffect(() => {
     const contentContainer = contentContainerRef.current;
-    if (!contentContainer || disableEffect) {
+    if (!contentContainer) {
       return;
     }
 
@@ -208,7 +206,7 @@ export function PageScroll({
       window.removeEventListener("hashchange", windowHasChangeListener, false);
       document.removeEventListener("scroll", documentScrollListener);
     };
-  }, [disableEffect]);
+  }, []);
 
   useEffect(() => {
     const pageContainer = pageContainerRef?.current;
@@ -260,10 +258,7 @@ export function PageScroll({
       </NavBar>
       <div
         ref={pageContainerRef}
-        className={clsx(
-          "h-full w-full transition-transform duration-500",
-          disableEffect ? "" : "fixed overflow-hidden",
-        )}
+        className="h-full w-full transition-transform duration-500 fixed overflow-hidden"
       >
         <div className="relative">
           <div ref={contentContainerRef}>{children}</div>

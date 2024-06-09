@@ -1,4 +1,4 @@
-import { NavMenu, NavMenuProps } from "../NavMenu";
+import { NavMenu, NavMenuProps } from "../nav-menu";
 
 export type NavListProps = {
   mainMenu: NavMenuProps;

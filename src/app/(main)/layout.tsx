@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import { NavList } from "~/components/NavList";
-import { PageScroll } from "~/components/PageScroll";
-import { TextLink } from "~/components/TextLink";
-import "./globals.css";
+import { NavList } from "~/components/nav-list";
+import { PageScroll } from "~/components/page-scroll";
+import { TextLink } from "~/components/text-link";
+import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

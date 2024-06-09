@@ -2,7 +2,7 @@
 
 import { ArrowUpIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { forwardRef, useState } from "react";
-import { SectionWrapper } from "../SectionWrapper";
+import { SectionWrapper } from "../section-wrapper";
 
 export type NavBarProps = {
   title?: React.ReactNode;
