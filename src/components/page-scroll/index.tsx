@@ -19,6 +19,7 @@ export function PageScroll({
   const contentContainerRef = useRef<HTMLDivElement>(null);
   const navbarContainerRef = useRef<HTMLDivElement>(null);
 
+  // Handling smooth scrolling
   useEffect(() => {
     const contentContainer = contentContainerRef.current;
     if (!contentContainer) {
@@ -208,6 +209,7 @@ export function PageScroll({
     };
   }, []);
 
+  // Handling navbar animation
   useEffect(() => {
     const pageContainer = pageContainerRef?.current;
     const navbarContainer = navbarContainerRef.current;
@@ -235,7 +237,11 @@ export function PageScroll({
     };
 
     const transitionRunListener = (event: Event) => {
-      if (event.target instanceof Element && event.target.tagName !== "NAV") {
+      if (
+        event.target instanceof Element &&
+        event.currentTarget instanceof Element &&
+        event.target.tagName !== event.currentTarget.tagName
+      ) {
         return;
       }
       toggleNavbarVisibility();

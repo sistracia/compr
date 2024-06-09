@@ -30,19 +30,19 @@ export default function RootLayout({
                 title: "Menu",
                 submenu: (
                   <>
-                    <Link href="#portfolio">
+                    <Link href="/portfolio">
                       <TextLink>Portfolio & Case Studies</TextLink>
                     </Link>
-                    <Link href="#about-us">
+                    <Link href="/about-us">
                       <TextLink>About Us</TextLink>
                     </Link>
-                    <Link href="#service">
+                    <Link href="/service">
                       <TextLink>Service</TextLink>
                     </Link>
-                    <Link href="#contact-us">
+                    <Link href="/contact-us">
                       <TextLink>Contact Us</TextLink>
                     </Link>
-                    <Link href="#faq">
+                    <Link href="/faq">
                       <TextLink>FAQ</TextLink>
                     </Link>
                   </>
@@ -53,22 +53,22 @@ export default function RootLayout({
                   title: "Information",
                   submenu: (
                     <>
-                      <Link href="#website-creation-services">
+                      <Link href="/website-creation-services">
                         <TextLink compact>Website Creation Services</TextLink>
                       </Link>
-                      <Link href="#android-ios-app-pricing">
+                      <Link href="/android-ios-app-pricing">
                         <TextLink compact>Android & iOS App Pricing</TextLink>
                       </Link>
-                      <Link href="#blog">
+                      <Link href="/blog">
                         <TextLink compact>Blog</TextLink>
                       </Link>
-                      <Link href="#our-approach">
+                      <Link href="/our-approach">
                         <TextLink compact>Out Approach</TextLink>
                       </Link>
-                      <Link href="#legal">
+                      <Link href="/legal">
                         <TextLink compact>Legal</TextLink>
                       </Link>
-                      <Link href="#privacy-cookies">
+                      <Link href="/privacy-cookies">
                         <TextLink compact>Privacy & Cookies</TextLink>
                       </Link>
                     </>
@@ -89,7 +89,7 @@ export default function RootLayout({
                       >
                         <TextLink compact>0822 6000 4141</TextLink>
                       </a>
-                      <Link href="#career">
+                      <Link href="/career">
                         <TextLink compact>Career</TextLink>
                       </Link>
                     </>

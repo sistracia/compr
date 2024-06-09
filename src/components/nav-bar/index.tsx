@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { SectionWrapper } from "../section-wrapper";
 
 export type NavBarProps = {
@@ -17,6 +17,30 @@ export const NavBar = forwardRef<HTMLDivElement, NavBarProps>(
     const onToggle = () => {
       setOpen(!open);
     };
+
+    // Close back the nav when navigating
+    useEffect(() => {
+      const anchorClickListeners: [Element, (event: Event) => void][] = [];
+      document
+        .querySelectorAll('a:not([href^="http"], [href^="https"])')
+        .forEach((anchor) => {
+          const anchorClickListener = () => {
+            setOpen(false);
+          };
+
+          anchorClickListeners.push([anchor, anchorClickListener]);
+        });
+
+      anchorClickListeners.forEach(([anchor, listener]) => {
+        anchor.addEventListener("click", listener);
+      });
+
+      return () => {
+        anchorClickListeners.forEach(([anchor, listener]) => {
+          anchor.removeEventListener("click", listener);
+        });
+      };
+    }, []);
 
     return (
       <>
