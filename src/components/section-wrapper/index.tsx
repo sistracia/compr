@@ -15,8 +15,8 @@ export const SectionWrapper = forwardRef<HTMLDivElement, SectionWrapperProps>(
       <div
         ref={ref}
         className={clsx(
-          "w-[90vw] sm:w-[80vw]",
-          inset ? "inset-x-[5vw] sm:inset-x-[10vw]" : "mx-[5vw] sm:mx-[10vw]",
+          "w-[90%] sm:w-[80%]",
+          inset ? "inset-x-[5%] sm:inset-x-[10%]" : "mx-[5%] sm:mx-[10%]",
           className,
         )}
       >

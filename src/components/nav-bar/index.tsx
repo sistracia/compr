@@ -51,7 +51,7 @@ export const NavBar = forwardRef<HTMLDivElement, NavBarProps>(
           <a className="text-3xl sm:text-3xl xl:text-5xl">{title}</a>
           <button onClick={onToggle}>
             {open ? (
-              <span className="grid items-center justify-center [&>*]:col-start-1 [&>*]:col-end-1 [&>*]:row-start-1 [&>*]:row-end-1 mix-blend-exclusion">
+              <span className="grid items-center justify-center *:col-start-1 *:col-end-1 *:row-start-1 *:row-end-1 mix-blend-exclusion">
                 <svg
                   width="23"
                   height="23"
@@ -92,7 +92,7 @@ export const NavBar = forwardRef<HTMLDivElement, NavBarProps>(
         </SectionWrapper>
         <nav
           ref={ref}
-          className="h-full sm:h-[60vh] overflow-scroll text-white bg-neutral-800 flex justify-between items-center transition-transform duration-500 fixed z-[1]"
+          className="h-full w-full sm:h-[60vh] overflow-scroll text-white bg-neutral-800 flex justify-between items-center transition-transform duration-500 fixed z-[1]"
           style={{
             transform: `translateY(-${open ? 0 : 100}%)`,
           }}

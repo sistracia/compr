@@ -4,15 +4,17 @@ import { TextUp } from "../text-up";
 
 export type PageHeaderProps = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   scrollToHash?: `#${string}`;
 };
 
 export function PageHeader({ subtitle, title, scrollToHash }: PageHeaderProps) {
   return (
-    <header className="relative h-dvh flex items-center bg-black text-white">
+    <header className="relative h-dvh flex flex-col justify-center bg-black text-white">
       <SectionWrapper>
-        <h3 className="text-lg sm:text-3xl mb-[2vw]">{subtitle}</h3>
+        {subtitle && (
+          <h3 className="text-lg sm:text-3xl mb-[2vw]">{subtitle}</h3>
+        )}
         <h1 className="leading-tight text-[9vw] sm:text-[4vw] tracking-tighter sm:tracking-tight font-semibold">
           <TextUp>{title}</TextUp>
         </h1>
