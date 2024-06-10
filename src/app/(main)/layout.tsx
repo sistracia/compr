@@ -2,13 +2,14 @@ import Link from "next/link";
 import { NavList } from "~/components/nav-list";
 import { PageScroll } from "~/components/page-scroll";
 import { TextLink } from "~/components/text-link";
-import contents from "~/data/contents.json";
+import { getAllContents } from "../actions/content";
 
-export default function MainLayout({
+export default async function MainLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const contents = await getAllContents();
   return (
     <PageScroll
       navbarTitle="hugof"
@@ -18,9 +19,9 @@ export default function MainLayout({
             title: "Menu",
             submenu: (
               <>
-                {Object.entries(contents).map(([slug, content]) => {
+                {contents.map((content) => {
                   return (
-                    <Link key={slug} href={`/${slug}`}>
+                    <Link key={content.slug} href={`/${content.slug}`}>
                       <TextLink>{content.subtitle}</TextLink>
                     </Link>
                   );

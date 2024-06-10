@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "migrate": "bun run --env-file=./env.local ./migrate.js"
   },
   "engines": {
     "node": ">=20"
@@ -21,6 +22,7 @@
     "clsx": "^2.1.1",
     "next": "14.2.3",
     "next-themes": "^0.3.0",
+    "postgres": "^3.4.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.51.5",
@@ -42,6 +44,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
     "postcss": "^8.4.38",
+    "postgres-shift": "^0.1.0",
     "prettier": "^3.3.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"

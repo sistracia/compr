@@ -1,25 +1,26 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { writeFile } from "node:fs/promises";
+import { editContent, getContentBySlug } from "~/app/actions/content";
+import NotFound from "~/app/not-found";
 import { ContentForm, ContentFromSchema } from "~/components/content-form";
-import contents from "~/data/contents.json";
 
-type Slug = keyof typeof contents;
-
-export default function EditSlug({ params }: { params: { slug: Slug } }) {
-  const content = contents[params.slug];
+export default async function EditSlug({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const content = await getContentBySlug(params.slug);
 
   const updateContent = async (content: ContentFromSchema) => {
     "use server";
-
-    const { slug, ...data } = content;
-    await writeFile(
-      process.cwd() + "/src/data/contents.json",
-      JSON.stringify({ ...contents, [slug]: data }),
-    );
+    await editContent({ ...content, content: {} });
     revalidatePath("/");
-    redirect(`/${slug}`);
+    redirect(`/${content.slug}`);
   };
+
+  if (!content) {
+    return <NotFound />;
+  }
 
   return (
     <ContentForm
