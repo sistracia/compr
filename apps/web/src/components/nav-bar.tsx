@@ -1,49 +1,37 @@
 "use client";
 
 import { ArrowUpIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { forwardRef, useEffect, useState } from "react";
+import { PageScroll, TopNavbar } from "@repo/smooth-page-scroll";
+import { useState } from "react";
 import { SectionWrapper } from "./section-wrapper";
 
 export type NavBarProps = {
   title?: React.ReactNode;
+  navbarContent?: React.ReactNode;
   children?: React.ReactNode;
 };
 
-export const NavBar = forwardRef<HTMLDivElement, NavBarProps>(
-  function (props, ref) {
-    const { title, children } = props;
-    const [open, setOpen] = useState(false);
+export function NavBar(props: NavBarProps) {
+  const { title, children, navbarContent } = props;
+  const [open, setOpen] = useState(false);
 
-    const onToggle = () => {
-      setOpen(!open);
-    };
+  const onToggle = () => {
+    setOpen(!open);
+  };
 
-    // Close back the nav when navigating
-    useEffect(() => {
-      const anchorClickListeners: [Element, (event: Event) => void][] = [];
-      document
-        .querySelectorAll('a:not([href^="http"], [href^="https"])')
-        .forEach((anchor) => {
-          const anchorClickListener = () => {
-            setOpen(false);
-          };
-
-          anchorClickListeners.push([anchor, anchorClickListener]);
-        });
-
-      anchorClickListeners.forEach(([anchor, listener]) => {
-        anchor.addEventListener("click", listener);
-      });
-
-      return () => {
-        anchorClickListeners.forEach(([anchor, listener]) => {
-          anchor.removeEventListener("click", listener);
-        });
-      };
-    }, []);
-
-    return (
-      <>
+  return (
+    <PageScroll
+      navbar={TopNavbar}
+      transform="500ms linear"
+      navbarOpen={open}
+      navbarOnLinkClick={onToggle}
+      navbarClassName="fixed z-[1] flex h-full w-full items-center justify-between overflow-scroll bg-neutral-800 text-white transition-transform duration-500 sm:h-[60vh]"
+      navbarContent={
+        <SectionWrapper className="h-full pt-[90px]">
+          {navbarContent}
+        </SectionWrapper>
+      }
+      navbarBar={
         <SectionWrapper
           inset={true}
           className="fixed top-[2vw] z-[2] flex items-center justify-between text-white mix-blend-exclusion"
@@ -90,20 +78,9 @@ export const NavBar = forwardRef<HTMLDivElement, NavBarProps>(
             )}
           </button>
         </SectionWrapper>
-        <nav
-          ref={ref}
-          className="fixed z-[1] flex h-full w-full items-center justify-between overflow-scroll bg-neutral-800 text-white transition-transform duration-500 sm:h-[60vh]"
-          style={{
-            transform: `translateY(-${open ? 0 : 100}%)`,
-          }}
-        >
-          <SectionWrapper className="h-full pt-[90px]">
-            {children}
-          </SectionWrapper>
-        </nav>
-      </>
-    );
-  },
-);
-
-NavBar.displayName = "NavBar";
+      }
+    >
+      {children}
+    </PageScroll>
+  );
+}

@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { NavList } from "@/components/nav-list";
-import { PageScroll } from "@/components/page-scroll";
-import { TextLink } from "@/components/text-link";
 import { getAllContents } from "@/actions/content";
+import { NavBar } from "@/components/nav-bar";
+import { NavList } from "@/components/nav-list";
+import { TextLink } from "@/components/text-link";
+import Link from "next/link";
 
 export default async function MainLayout({
   children,
@@ -10,9 +10,10 @@ export default async function MainLayout({
   children: React.ReactNode;
 }>) {
   const contents = await getAllContents();
+
   return (
-    <PageScroll
-      navbarTitle="hugof"
+    <NavBar
+      title="hugof"
       navbarContent={
         <NavList
           mainMenu={{
@@ -33,6 +34,6 @@ export default async function MainLayout({
       }
     >
       {children}
-    </PageScroll>
+    </NavBar>
   );
 }
