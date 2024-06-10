@@ -1,5 +1,8 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
+
+// We want each package to be responsible for its own content.
+const config: Omit<Config, "content"> = {
   darkMode: ["class"],
   prefix: "",
   theme: {
@@ -67,5 +70,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 };
+
+export default config;
