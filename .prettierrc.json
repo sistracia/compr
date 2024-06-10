@@ -1,3 +1,6 @@
 {
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindConfig": "./packages/config-tailwind/tailwind.config.js",
+  "tailwindFunctions": ["clsx"],
   "trailingComma": "all"
 }

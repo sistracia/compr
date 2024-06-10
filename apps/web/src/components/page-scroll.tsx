@@ -264,7 +264,7 @@ export function PageScroll({
       </NavBar>
       <div
         ref={pageContainerRef}
-        className="h-full w-full transition-transform duration-500 fixed overflow-hidden"
+        className="fixed h-full w-full overflow-hidden transition-transform duration-500"
       >
         <div className="relative">
           <div ref={contentContainerRef}>{children}</div>

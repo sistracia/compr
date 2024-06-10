@@ -10,23 +10,23 @@ export type PageHeaderProps = {
 
 export function PageHeader({ subtitle, title, scrollToHash }: PageHeaderProps) {
   return (
-    <header className="relative h-dvh flex flex-col justify-center bg-black text-white">
+    <header className="relative flex h-dvh flex-col justify-center bg-black text-white">
       <SectionWrapper>
         {subtitle && (
-          <h3 className="text-lg sm:text-3xl mb-[2vw]">{subtitle}</h3>
+          <h3 className="mb-[2vw] text-lg sm:text-3xl">{subtitle}</h3>
         )}
-        <h1 className="leading-tight text-[9vw] sm:text-[4vw] tracking-tighter sm:tracking-tight font-semibold">
+        <h1 className="text-[9vw] font-semibold leading-tight tracking-tighter sm:text-[4vw] sm:tracking-tight">
           <TextUp>{title}</TextUp>
         </h1>
       </SectionWrapper>
       <SectionWrapper className="absolute bottom-[5vw] flex justify-center sm:justify-end">
         <a className="flex items-center" href={scrollToHash}>
           Scroll Down
-          <span className="ml-[10px] bg-zinc-700 rounded-full p-2 w-[9vw] sm:w-[5vw] md:w-[2.5vw] h-[9vw] sm:h-[5vw] md:h-[2.5vw]">
+          <span className="ml-[10px] h-[9vw] w-[9vw] rounded-full bg-zinc-700 p-2 sm:h-[5vw] sm:w-[5vw] md:h-[2.5vw] md:w-[2.5vw]">
             <ArrowDownIcon
               width="25"
               height="25"
-              className="text-white w-full h-full"
+              className="h-full w-full text-white"
             />
           </span>
         </a>

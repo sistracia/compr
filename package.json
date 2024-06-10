@@ -5,13 +5,15 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
-    "clean": "turbo clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky",
     "ui:generate:component": "pnpm --filter @repo/ui dlx shadcn-ui@latest add",
     "web:migrate": "pnpm --filter web run migrate"
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "^7.12.0",
+    "eslint-config-next": "^14.2.3",
+    "eslint-config-turbo": "^2.0.3",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",

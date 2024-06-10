@@ -68,7 +68,7 @@ export function ContentForm({ defaulValues, createContent }: ContentFormProps) {
   return (
     <ResizablePanelGroup direction="horizontal">
       <ResizablePanel>
-        <div className="[&_*]:!animate-none [&_*]:!transition-none [&_*]:!duration-0 [&_*]:!delay-0">
+        <div className="[&_*]:!animate-none [&_*]:!transition-none [&_*]:!delay-0 [&_*]:!duration-0">
           <PageRenderer title={formData.title} subtitle={formData.subtitle} />
         </div>
       </ResizablePanel>
