@@ -7,7 +7,6 @@
     "type-check": "turbo type-check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky",
-    "ui:generate:component": "pnpm --filter @repo/ui dlx shadcn-ui@latest add",
     "web:migrate": "pnpm --filter web run migrate"
   },
   "devDependencies": {

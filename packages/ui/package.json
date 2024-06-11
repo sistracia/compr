@@ -4,9 +4,6 @@
   "sideEffects": [
     "**/*.css"
   ],
-  "imports": {
-    "#*": "./src/*"
-  },
   "exports": {
     "./styles.css": "./dist/index.css",
     "./*": "./src/*.tsx"
@@ -16,8 +13,7 @@
     "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "lint": "eslint src/",
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
-    "type-check": "tsc --noEmit",
-    "generate:component": "pnpm dlx shadcn-ui@latest add"
+    "type-check": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^18.3.1"
@@ -26,11 +22,11 @@
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/react": "^18.3.3",
-    "autoprefixer": "^10.4.18",
-    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
     "react": "^18.3.1",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.0",
@@ -38,8 +34,8 @@
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.3.0",
     "react-hook-form": "^7.51.5",
-    "react-resizable-panels": "^2.0.19"
+    "react-resizable-panels": "^2.0.19",
+    "tailwind-merge": "^2.3.0"
   }
 }

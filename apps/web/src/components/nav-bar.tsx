@@ -37,7 +37,7 @@ export function NavBar(props: NavBarProps) {
           className="fixed top-[2vw] z-[2] flex items-center justify-between text-white mix-blend-exclusion"
         >
           <a className="text-3xl sm:text-3xl xl:text-5xl">{title}</a>
-          <button onClick={onToggle}>
+          <button aria-label="navbar button" onClick={onToggle}>
             {open ? (
               <span className="grid items-center justify-center mix-blend-exclusion *:col-start-1 *:col-end-1 *:row-start-1 *:row-end-1">
                 <svg
