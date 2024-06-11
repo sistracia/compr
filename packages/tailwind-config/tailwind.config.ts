@@ -63,6 +63,10 @@ const config: Omit<Config, "content"> = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "circle-fill": {
+          from: { "stroke-dashoffset": "565.48" },
+          to: { "stroke-dashoffset": "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
