@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import "@repo/ui/styles.css";
+import "@repo/form-ui/styles.css";
+import "@repo/hugof-ui/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";

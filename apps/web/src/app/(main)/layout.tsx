@@ -1,7 +1,7 @@
 import { getAllContents } from "@/actions/content";
-import { NavBar } from "@/components/nav-bar";
-import { NavList } from "@/components/nav-list";
-import { TextLink } from "@/components/text-link";
+import { NavBar } from "@repo/hugof-ui/nav-bar";
+import { NavList } from "@repo/hugof-ui/nav-list";
+import { TextLink } from "@repo/hugof-ui/text-link";
 import Link from "next/link";
 
 export default async function MainLayout({

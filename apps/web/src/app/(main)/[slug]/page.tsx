@@ -1,6 +1,6 @@
 import { getContentBySlug } from "@/actions/content";
 import NotFound from "@/app/not-found";
-import { PageRenderer } from "@/components/page-renderer";
+import { PageRenderer } from "@repo/hugof-ui/page-renderer";
 
 export default async function DetailPage({
   params,

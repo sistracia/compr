@@ -2,7 +2,7 @@
   "name": "@repo/smooth-page-scroll",
   "version": "0.0.0",
   "private": true,
-  "exports": "./index.tsx",
+  "exports": "./src/index.tsx",
   "peerDependencies": {
     "react": "^18.3.1"
   },

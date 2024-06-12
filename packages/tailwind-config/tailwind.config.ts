@@ -3,7 +3,7 @@ import tailwindcssAnimate from "tailwindcss-animate";
 
 // We want each package to be responsible for its own content.
 const config: Omit<Config, "content"> = {
-  darkMode: ["class"],
+  darkMode: ["selector"],
   prefix: "",
   theme: {
     container: {

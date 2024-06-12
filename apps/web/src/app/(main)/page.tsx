@@ -1,4 +1,4 @@
-import { PageRenderer } from "@/components/page-renderer";
+import { PageRenderer } from "@repo/hugof-ui/page-renderer";
 
 export default function Home() {
   return (

@@ -1,13 +1,12 @@
-const extendsConfig = [
-  "eslint:recommended",
-  "plugin:@typescript-eslint/recommended",
-  "plugin:react/recommended",
-  "prettier",
-  "turbo",
-];
-
 module.exports = {
-  extends: extendsConfig,
+  extends: [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "turbo",
+  ],
   settings: {
     react: {
       version: "detect",
@@ -21,10 +20,4 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
   },
-  overrides: [
-    {
-      files: ["apps/**/*"],
-      extends: [...extendsConfig, "next/core-web-vitals"],
-    },
-  ],
 };

@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { cn } from "@repo/utils";
 
 export type NavMenuProps = {
   title: string;
@@ -8,7 +8,7 @@ export type NavMenuProps = {
 
 export function NavMenu({ title, submenu, compact }: NavMenuProps) {
   return (
-    <div className={clsx("flex flex-col", compact ? "gap-2" : "gap-5")}>
+    <div className={cn("flex flex-col", compact ? "gap-2" : "gap-5")}>
       <p className="text-xs">{title}</p>
       {submenu}
     </div>
