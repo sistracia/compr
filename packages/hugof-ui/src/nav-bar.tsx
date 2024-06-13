@@ -39,7 +39,7 @@ export function NavBar(props: NavBarProps) {
           <a className="text-3xl sm:text-3xl xl:text-5xl">{title}</a>
           <button aria-label="navbar button" onClick={onToggle}>
             {open ? (
-              <span className="grid items-center justify-center mix-blend-exclusion *:col-start-1 *:col-end-1 *:row-start-1 *:row-end-1">
+              <span className="grid items-center justify-center *:col-start-1 *:col-end-1 *:row-start-1 *:row-end-1">
                 <svg
                   width="23"
                   height="23"
@@ -66,14 +66,14 @@ export function NavBar(props: NavBarProps) {
                 </svg>
                 <ArrowUpIcon
                   stroke="white"
-                  className="w-full mix-blend-exclusion duration-500 animate-in zoom-in-50"
+                  className="w-full duration-500 animate-in zoom-in-50"
                 />
               </span>
             ) : (
               <HamburgerMenuIcon
                 width="23"
                 height="23"
-                className="mix-blend-exclusion duration-500 animate-in zoom-in-50"
+                className="duration-500 animate-in zoom-in-50"
               />
             )}
           </button>
