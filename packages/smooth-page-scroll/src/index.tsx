@@ -24,17 +24,38 @@ export const TopNavbar = forwardRef<HTMLElement, NavbarProps>(
       navbarClassName,
       navbarStyle,
     } = props;
+    const navRef = useRef<HTMLElement | null>(null);
+
+    const refCallback = (currentRef: HTMLElement | null) => {
+      navRef.current = currentRef;
+
+      if (ref === null) {
+        return;
+      }
+
+      if (typeof ref === "function") {
+        ref(currentRef);
+        return;
+      }
+
+      ref.current = currentRef;
+    };
 
     // Close back the nav when navigating
     useEffect(() => {
-      return listenInternalLink(navbarOnLinkClick);
+      const navRefContainer = navRef.current;
+      if (navRefContainer === null) {
+        return;
+      }
+
+      return listenInternalLink(navRefContainer, navbarOnLinkClick);
     }, [navbarOnLinkClick]);
 
     return (
       <>
         {navbarBar}
         <nav
-          ref={ref}
+          ref={refCallback}
           className={navbarClassName}
           style={{
             ...navbarStyle,
@@ -64,9 +85,9 @@ export function PageScroll({
   navbar: Navbar,
   ...resProps
 }: PageScrollProps) {
-  const pageContainerRef = useRef<HTMLDivElement>(null);
-  const contentContainerRef = useRef<HTMLDivElement>(null);
-  const navbarContainerRef = useRef<HTMLElement>(null);
+  const pageContainerRef = useRef<HTMLDivElement | null>(null);
+  const contentContainerRef = useRef<HTMLDivElement | null>(null);
+  const navbarContainerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const contentContainer = contentContainerRef.current;

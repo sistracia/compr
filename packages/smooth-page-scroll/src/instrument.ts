@@ -63,9 +63,12 @@ export function instrumentNavbarTransitionY(
   };
 }
 
-export function listenInternalLink(onLinkClick?: (event: Event) => void) {
+export function listenInternalLink(
+  container: HTMLElement,
+  onLinkClick?: (event: Event) => void,
+) {
   const anchorClickListeners: [Element, (event: Event) => void][] = [];
-  document
+  container
     .querySelectorAll('a:not([href^="http"], [href^="https"])')
     .forEach((anchor) => {
       const anchorClickListener = (event: Event) => {
