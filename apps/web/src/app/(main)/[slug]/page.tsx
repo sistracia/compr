@@ -1,8 +1,8 @@
 import { getContentBySlug } from "@/actions/content";
 import NotFound from "@/app/not-found";
-import { PageRenderer } from "@repo/hugof-ui/page-renderer";
+import { DetailPage } from "@repo/hugof-ui/detail-page";
 
-export default async function DetailPage({
+export default async function ContentDetailPage({
   params,
 }: {
   params: { slug: string };
@@ -13,5 +13,5 @@ export default async function DetailPage({
     return <NotFound />;
   }
 
-  return <PageRenderer subtitle={content.subtitle} title={content.title} />;
+  return <DetailPage subtitle={content.subtitle} title={content.title} />;
 }

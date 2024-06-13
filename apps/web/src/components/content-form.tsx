@@ -1,6 +1,6 @@
 "use client";
 
-import { PageRenderer } from "@repo/hugof-ui/page-renderer";
+import { DetailPage } from "@repo/hugof-ui/detail-page";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -69,7 +69,7 @@ export function ContentForm({ defaulValues, createContent }: ContentFormProps) {
     <ResizablePanelGroup direction="horizontal">
       <ResizablePanel>
         <div className="[&_*]:!animate-none [&_*]:!transition-none [&_*]:!delay-0 [&_*]:!duration-0">
-          <PageRenderer title={formData.title} subtitle={formData.subtitle} />
+          <DetailPage title={formData.title} subtitle={formData.subtitle} />
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />

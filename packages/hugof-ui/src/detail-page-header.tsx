@@ -2,13 +2,17 @@ import { ArrowDownIcon } from "@radix-ui/react-icons";
 import { SectionWrapper } from "./section-wrapper";
 import { TextUp } from "./text-up";
 
-export type PageHeaderProps = {
+export type DetailPageHeaderProps = {
   title: string;
   subtitle?: string;
   scrollToHash?: `#${string}`;
 };
 
-export function PageHeader({ subtitle, title, scrollToHash }: PageHeaderProps) {
+export function DetailPageHeader({
+  title,
+  subtitle,
+  scrollToHash,
+}: DetailPageHeaderProps) {
   return (
     <header className="relative flex h-dvh flex-col justify-center bg-black text-white">
       <SectionWrapper>

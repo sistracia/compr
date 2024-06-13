@@ -67,6 +67,14 @@ const config: Omit<Config, "content"> = {
           from: { "stroke-dashoffset": "565.48" },
           to: { "stroke-dashoffset": "0" },
         },
+        "slide-bottom-out": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(200%)" },
+        },
+        "slide-right-out": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(200%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

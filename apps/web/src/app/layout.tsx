@@ -28,7 +28,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <div className="fixed bottom-0 w-full bg-yellow-100 text-black">
+          <div className="fixed top-0 z-[9999] w-full bg-yellow-100 text-black">
             <p>
               This{" "}
               <a

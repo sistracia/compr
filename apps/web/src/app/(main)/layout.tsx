@@ -34,6 +34,11 @@ export default async function MainLayout({
       }
     >
       {children}
+      <div className="w-full border-t-2 border-black bg-white p-1">
+        <Link href="/home/edit">
+          <TextLink compact>Edit this Page</TextLink>
+        </Link>
+      </div>
     </NavBar>
   );
 }
