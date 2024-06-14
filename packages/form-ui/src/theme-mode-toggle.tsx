@@ -1,12 +1,12 @@
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
-import { Button } from "./button";
+import { Button } from "@repo/form-ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./dropdown-menu";
+} from "@repo/form-ui/dropdown-menu";
 
 export interface ThemeModeToggleProps {
   onLightClick?: () => void;
@@ -23,9 +23,9 @@ export function ThemeModeToggle({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
-          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          <SunIcon className="form-ui-h-[1.2rem] form-ui-w-[1.2rem] form-ui-rotate-0 form-ui-scale-100 form-ui-transition-all dark:-form-ui-rotate-90 dark:form-ui-scale-0" />
+          <MoonIcon className="form-ui-absolute form-ui-h-[1.2rem] form-ui-w-[1.2rem] form-ui-rotate-90 form-ui-scale-0 form-ui-transition-all dark:form-ui-rotate-0 dark:form-ui-scale-100" />
+          <span className="form-ui-sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

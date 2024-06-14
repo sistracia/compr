@@ -27,8 +27,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <div className="fixed top-0 z-[9999] w-full bg-yellow-100 text-black">
+          <div className="w-full bg-yellow-100 text-black">
             <p>
               This{" "}
               <a
@@ -42,6 +41,7 @@ export default function RootLayout({
               web clone is made for learning purpose by cloning.
             </p>
           </div>
+          {children}
         </ThemeProvider>
       </body>
     </html>

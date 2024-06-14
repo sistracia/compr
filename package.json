@@ -4,10 +4,11 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "type-check": "turbo type-check",
+    "type:check": "turbo type:check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky",
-    "web:migrate": "pnpm --filter web run migrate"
+    "web:migrate": "pnpm --filter web run migrate",
+    "formui:generate:component": "pnpm --filter @repo/form-ui run generate:component"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.12.0",

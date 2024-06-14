@@ -11,7 +11,7 @@ const ResizablePanelGroup = ({
 }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
   <ResizablePrimitive.PanelGroup
     className={cn(
-      "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
+      "form-ui-flex form-ui-h-full form-ui-w-full data-[panel-group-direction=vertical]:form-ui-flex-col",
       className,
     )}
     {...props}
@@ -29,14 +29,14 @@ const ResizableHandle = ({
 }) => (
   <ResizablePrimitive.PanelResizeHandle
     className={cn(
-      "relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
+      "form-ui-relative form-ui-flex form-ui-w-px form-ui-items-center form-ui-justify-center form-ui-bg-border after:form-ui-absolute after:form-ui-inset-y-0 after:form-ui-left-1/2 after:form-ui-w-1 after:-form-ui-translate-x-1/2 focus-visible:form-ui-outline-none focus-visible:form-ui-ring-1 focus-visible:form-ui-ring-ring focus-visible:form-ui-ring-offset-1 data-[panel-group-direction=vertical]:form-ui-h-px data-[panel-group-direction=vertical]:form-ui-w-full data-[panel-group-direction=vertical]:form-ui-after data-[panel-group-direction=vertical]:form-ui-after data-[panel-group-direction=vertical]:form-ui-after data-[panel-group-direction=vertical]:form-ui-after data-[panel-group-direction=vertical]:form-ui-after [&[data-panel-group-direction=vertical]>div]:form-ui-rotate-90",
       className,
     )}
     {...props}
   >
     {withHandle && (
-      <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
-        <DragHandleDots2Icon className="h-2.5 w-2.5" />
+      <div className="form-ui-z-10 form-ui-flex form-ui-h-4 form-ui-w-3 form-ui-items-center form-ui-justify-center form-ui-rounded-sm form-ui-border form-ui-bg-border">
+        <DragHandleDots2Icon className="form-ui-h-2.5 form-ui-w-2.5" />
       </div>
     )}
   </ResizablePrimitive.PanelResizeHandle>

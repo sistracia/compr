@@ -35,7 +35,7 @@ export function HomePageHeader({
         })}
       </div>
       <SectionWrapper className="z-1">
-        <h1 className="text-[7vw] font-semibold leading-tight tracking-tighter mix-blend-exclusion sm:text-[3vw] sm:tracking-tight">
+        <h1 className="text-[7vw] font-semibold leading-tight tracking-tighter text-white mix-blend-exclusion sm:text-[3vw] sm:tracking-tight">
           <TextUp>{title}</TextUp>
         </h1>
       </SectionWrapper>
