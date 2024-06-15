@@ -5,13 +5,13 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@repo/form-ui/resizable";
+} from "@repo/form-ui/ui/resizable";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@repo/form-ui/button";
+import { Button } from "@repo/form-ui/ui/button";
 import {
   Form,
   FormControl,
@@ -19,9 +19,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@repo/form-ui/form";
-import { Input } from "@repo/form-ui/input";
-import { Textarea } from "@repo/form-ui/textarea";
+} from "@repo/form-ui/ui/form";
+import { Input } from "@repo/form-ui/ui/input";
+import { Textarea } from "@repo/form-ui/ui/textarea";
 
 const formSchema = z.object({
   slug: z.string().min(1, { message: "Slug required." }).regex(/^\S*$/, {

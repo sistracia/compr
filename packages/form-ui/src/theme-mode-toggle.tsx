@@ -1,12 +1,12 @@
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
-import { Button } from "./button";
+import { Button } from "@repo/form-ui/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./dropdown-menu";
+} from "@repo/form-ui/ui/dropdown-menu";
 
 export interface ThemeModeToggleProps {
   onLightClick?: () => void;

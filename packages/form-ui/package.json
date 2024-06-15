@@ -8,13 +8,14 @@
   "license": "MIT",
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./*": "./src/*.tsx"
+    "./ui/*": "./src/*.tsx"
   },
   "scripts": {
     "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "lint": "eslint --max-warnings 0 src/",
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "generate:component": "pnpm dlx shadcn-ui@latest add -p src"
   },
   "peerDependencies": {
     "react": "^18.3.1",
