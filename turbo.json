@@ -10,7 +10,7 @@
     "lint": {
       "cache": false
     },
-    "type:check": {
+    "type-check": {
       "cache": false
     },
     "dev": {
