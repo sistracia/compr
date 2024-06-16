@@ -1,4 +1,5 @@
 import { PlopTypes } from "@turbo/gen";
+import { execSync } from "node:child_process";
 
 export function tsPackage(plop: PlopTypes.NodePlopAPI) {
   plop.setGenerator("ts-package", {
@@ -35,20 +36,24 @@ export function tsPackage(plop: PlopTypes.NodePlopAPI) {
       },
       {
         type: "add",
-        path: "packages/{{ dashCase package }}/tsconfig.json",
-        templateFile: "templates/tsconfig.hbs",
         data: { configName: "base" },
+        path: "packages/{{ dashCase package }}/tsconfig.json",
+        templateFile: "templates/package-tsconfig.hbs",
       },
       {
         type: "add",
-        path: "packages/{{ dashCase package }}/.eslintrc.js",
         data: { configName: "library" },
-        templateFile: "templates/eslint.hbs",
+        path: "packages/{{ dashCase package }}/.eslintrc.js",
+        templateFile: "templates/package-eslint.hbs",
       },
       {
         type: "add",
         path: "packages/{{ dashCase package }}/package.json",
         templateFile: "templates/ts-package-packagejson.hbs",
+      },
+      function customAction() {
+        execSync(`pnpm install -w`);
+        return "New TypeScript package installed";
       },
     ],
   });

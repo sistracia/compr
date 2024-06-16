@@ -5,6 +5,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
+    "gen": "turbo gen",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky",
     "web:migrate": "pnpm --filter web run migrate",

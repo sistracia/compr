@@ -1,8 +1,9 @@
 import { PlopTypes } from "@turbo/gen";
+import { execSync } from "node:child_process";
 
 export function reactTSPackage(plop: PlopTypes.NodePlopAPI) {
   plop.setGenerator("react-ts-package", {
-    description: "Create new TypeScript package",
+    description: "Create new React package with TypeScript",
     prompts: [
       {
         type: "input",
@@ -35,20 +36,24 @@ export function reactTSPackage(plop: PlopTypes.NodePlopAPI) {
       },
       {
         type: "add",
-        path: "packages/{{ dashCase package }}/tsconfig.json",
-        templateFile: "templates/tsconfig.hbs",
         data: { configName: "react-library" },
+        path: "packages/{{ dashCase package }}/tsconfig.json",
+        templateFile: "templates/package-tsconfig.hbs",
       },
       {
         type: "add",
-        path: "packages/{{ dashCase package }}/.eslintrc.js",
         data: { configName: "react-internal" },
-        templateFile: "templates/eslint.hbs",
+        path: "packages/{{ dashCase package }}/.eslintrc.js",
+        templateFile: "templates/package-eslint.hbs",
       },
       {
         type: "add",
         path: "packages/{{ dashCase package }}/package.json",
         templateFile: "templates/react-ts-package-packagejson.hbs",
+      },
+      function customAction() {
+        execSync(`pnpm install -w`);
+        return "New React package with TypeScript installed";
       },
     ],
   });
