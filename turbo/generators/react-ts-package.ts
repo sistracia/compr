@@ -31,7 +31,7 @@ export function reactTSPackage(plop: PlopTypes.NodePlopAPI) {
       },
       {
         type: "add",
-        path: "packages/{{ dashCase package }}/src/index.ts",
+        path: "packages/{{ dashCase package }}/src/index.tsx",
         templateFile: "templates/empty-file.hbs",
       },
       {
