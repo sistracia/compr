@@ -1,40 +1,49 @@
-export const setContainerTranslateY = (
+export function setContainerTranslateY(
   contentContainer: HTMLElement,
   value: number,
-) => {
+) {
   contentContainer.style.transform = `translateY(${value}px)`;
-};
+}
 
-export const isBodyHasOverflowStyle = () => {
+export function isBodyHasOverflowStyle() {
   return document.body.style.getPropertyValue("overflow") !== "";
-};
+}
 
-const setTransitionStyle = (
-  contentContainer: HTMLElement,
-  transition: string,
-) => {
+export function setBodyHeight(height: number) {
+  document.body.setAttribute("style", `height: ${height}px`);
+}
+
+export function getBodyHeight() {
+  return document.body.clientHeight;
+}
+
+export function isPageLoaded() {
+  return document.body.hasAttribute("style");
+}
+
+function setTransitionStyle(contentContainer: HTMLElement, transition: string) {
   if (!contentContainer.style.transition) {
     contentContainer.style.transition = transition;
   }
-};
+}
 
-const unsetTransitionStyle = (contentContainer: HTMLElement) => {
+function unsetTransitionStyle(contentContainer: HTMLElement) {
   if (contentContainer.style.transition) {
     contentContainer.style.removeProperty("transition");
   }
-};
+}
 
-const getHashValue = (hash: string) => {
+function getHashValue(hash: string) {
   return hash.substring(1);
-};
+}
 
-const getHashDestination = (hash: string) => {
+function getHashDestination(hash: string) {
   return document.getElementById(getHashValue(hash));
-};
+}
 
-const getHashDestinationY = (hash?: string) => {
+function getHashDestinationY(hash?: string) {
   return hash ? getHashDestination(hash)?.offsetTop || 0 : 0;
-};
+}
 
 export function listenBeforeunload() {
   // Handle scroll restoration manually
@@ -61,13 +70,13 @@ export function listenBeforeunload() {
   };
 }
 
-export const initLoad = (contentContainer: HTMLElement, transform: string) => {
+export function initLoad(contentContainer: HTMLElement, transform: string) {
   // For handle new page load with hash
   const historyState = window.history.state;
   const hash = window.location.hash;
 
   const containerHeight = contentContainer.clientHeight;
-  document.body.setAttribute("style", `height: ${containerHeight}px`);
+  setBodyHeight(containerHeight);
 
   const loadPageWithHash =
     hash && historyState && historyState.scrollY === undefined;
@@ -87,7 +96,22 @@ export const initLoad = (contentContainer: HTMLElement, transform: string) => {
   window.scrollTo({ left: 0, top: initialY, behavior: "instant" });
 
   return { hash, loadPageWithHash, initialY };
-};
+}
+
+export function scollTicker(callback: () => void) {
+  // Handle scroll effect on scroll
+  // See: https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event#scroll_event_throttling
+  let ticking = false;
+  return () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        callback();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+}
 
 export function listenScroll(
   hash: string,
@@ -189,40 +213,31 @@ export function listenScroll(
     }, 1);
   };
 
-  // Handle scroll effect on scroll
-  // See: https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event#scroll_event_throttling
-  let ticking = false;
-  const documentScrollListener = () => {
+  const documentScrollListener = scollTicker(() => {
     if (scrollFromHashChange) {
       return;
     }
 
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const documentScrollTop = document.documentElement.scrollTop;
-        const yCoordinate = loadPageWithHash
-          ? documentScrollTop - initialY
-          : documentScrollTop;
-        setContainerTranslateY(contentContainer, yCoordinate * -1);
-        ticking = false;
-      });
-      ticking = true;
-    }
-  };
+    const documentScrollTop = document.documentElement.scrollTop;
+    const yCoordinate = loadPageWithHash
+      ? documentScrollTop - initialY
+      : documentScrollTop;
+    setContainerTranslateY(contentContainer, yCoordinate * -1);
+  });
 
   anchorClickListeners.forEach(([anchor, listener]) => {
     anchor.addEventListener("click", listener);
   });
   document.addEventListener("scroll", anchoScrollListener);
-  window.addEventListener("hashchange", windowHasChangeListener, false);
   document.addEventListener("scroll", documentScrollListener);
+  window.addEventListener("hashchange", windowHasChangeListener, false);
 
   return () => {
     anchorClickListeners.forEach(([anchor, listener]) => {
       anchor.removeEventListener("click", listener);
     });
     document.removeEventListener("scroll", anchoScrollListener);
-    window.removeEventListener("hashchange", windowHasChangeListener, false);
     document.removeEventListener("scroll", documentScrollListener);
+    window.removeEventListener("hashchange", windowHasChangeListener, false);
   };
 }

@@ -40,9 +40,6 @@ importers:
       "@repo/hugof-ui":
         specifier: workspace:*
         version: link:../../packages/hugof-ui
-      "@repo/smooth-page-scroll":
-        specifier: workspace:*
-        version: link:../../packages/smooth-page-scroll
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -89,9 +86,6 @@ importers:
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
@@ -192,9 +186,9 @@ importers:
       "@radix-ui/react-icons":
         specifier: ^1.3.0
         version: 1.3.0(react@18.3.1)
-      "@repo/smooth-page-scroll":
+      "@repo/smooth-scroll":
         specifier: workspace:*
-        version: link:../smooth-page-scroll
+        version: link:../smooth-scroll
       "@repo/utils":
         specifier: workspace:*
         version: link:../utils
@@ -230,7 +224,7 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
-  packages/smooth-page-scroll:
+  packages/smooth-scroll:
     devDependencies:
       "@repo/eslint-config":
         specifier: workspace:*
