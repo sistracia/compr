@@ -3,57 +3,57 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { cn } from "@repo/utils";
 import { useState } from "react";
+import { HorizontalScroll } from "@repo/smooth-scroll/horizontal-scroll";
 
 export type ImageSliderProps = {
   contents: React.ReactNode[];
   className?: string;
   style?: React.CSSProperties;
+  displayNumber?: number;
 };
 
-export function ImageSlider({ contents, className, style }: ImageSliderProps) {
-  const [slideWindow, setSlideWindow] = useState<[number, number, number]>([
-    0, 1, 2,
-  ]);
+export function ImageSlider({
+  contents,
+  className,
+  style,
+  displayNumber = 3,
+}: ImageSliderProps) {
+  const [windowNumber, setWindowNumber] = useState(0);
 
-  const disablePrev = slideWindow[0] === 0;
-  const disabledNext =
-    slideWindow[slideWindow.length - 1] === contents.length - 1;
+  const disablePrev = windowNumber === 0;
+  const disabledNext = windowNumber === contents.length - displayNumber;
 
   const prev = () => {
     if (disablePrev) {
       return;
     }
-    setSlideWindow([slideWindow[0] - 1, slideWindow[0], slideWindow[1]]);
+    setWindowNumber(windowNumber - 1);
   };
 
   const next = () => {
     if (disabledNext) {
       return;
     }
-    setSlideWindow([slideWindow[1], slideWindow[2], slideWindow[2] + 1]);
+    setWindowNumber(windowNumber + 1);
   };
 
   return (
     <div style={style} className={cn("relative flex h-full w-full", className)}>
-      {contents.map((content, index) => {
-        return (
-          <div
-            key={index}
-            className={cn(
-              "relative transition-all duration-200 ease-linear",
-              "before:absolute before:left-0 before:top-0 before:h-full before:w-full before:animate-[slide-right-out] before:bg-neutral-800 before:delay-1000 before:duration-1000 before:content-[''] before:fill-mode-forwards",
-              slideWindow.includes(index) ? "w-full" : "w-[0px]",
-            )}
-          >
-            {content}
-          </div>
-        );
-      })}
+      <HorizontalScroll
+        windowNumber={windowNumber}
+        displayNumber={displayNumber}
+        contents={contents}
+        contentClassName={cn(
+          "overflow-hidden transition-all duration-200 ease-linear",
+          "before:pointer-events-none before:absolute before:left-0 before:top-0 before:h-full before:w-full before:animate-[slide-right-out] before:bg-neutral-800 before:delay-1000 before:duration-1000 before:content-[''] before:fill-mode-forwards",
+        )}
+      />
+
       <div className="absolute bottom-0 flex w-full justify-between px-5 py-2">
         <button
           className={cn(
             "flex items-center justify-center rounded-full bg-black/50 p-2",
-            disablePrev && "stroke-gray-400",
+            disablePrev ? "stroke-gray-400" : "stroke-white",
           )}
           onClick={prev}
           disabled={disablePrev}
@@ -63,7 +63,7 @@ export function ImageSlider({ contents, className, style }: ImageSliderProps) {
         <button
           className={cn(
             "flex items-center justify-center rounded-full bg-black/50 p-2",
-            disabledNext && "stroke-gray-400",
+            disabledNext ? "stroke-gray-400" : "stroke-white",
           )}
           onClick={next}
           disabled={disabledNext}

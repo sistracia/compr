@@ -6,12 +6,14 @@ export type DetailPageHeaderProps = {
   title: string;
   subtitle?: string;
   scrollToHash?: `#${string}`;
+  extra?: React.ReactNode;
 };
 
 export function DetailPageHeader({
   title,
   subtitle,
   scrollToHash,
+  extra,
 }: DetailPageHeaderProps) {
   return (
     <header className="relative flex h-dvh flex-col justify-center bg-black text-white">
@@ -23,6 +25,7 @@ export function DetailPageHeader({
           <TextUp>{title}</TextUp>
         </h1>
       </SectionWrapper>
+      {extra && <SectionWrapper>{extra}</SectionWrapper>}
       <SectionWrapper className="absolute bottom-[5vw] flex justify-center sm:justify-end">
         <a className="flex items-center" href={scrollToHash}>
           Scroll Down

@@ -6,24 +6,23 @@ export type HomePageHeaderProps = {
   title: string;
   curtainCount?: number;
   className?: string;
-  style?: React.CSSProperties;
+  extra?: React.ReactNode;
 };
 
 export function HomePageHeader({
   title,
   curtainCount = 0,
   className,
-  style,
+  extra,
 }: HomePageHeaderProps) {
   return (
     <header
-      style={style}
       className={cn(
         "relative flex h-dvh flex-col justify-center bg-white",
         className,
       )}
     >
-      <div className="absolute left-0 top-0 flex h-full w-full">
+      <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full overflow-hidden">
         {Array.from({ length: curtainCount }, (_, index) => {
           return (
             <div
@@ -35,10 +34,11 @@ export function HomePageHeader({
         })}
       </div>
       <SectionWrapper className="z-1">
-        <h1 className="text-[7vw] font-semibold leading-tight tracking-tighter mix-blend-exclusion sm:text-[3vw] sm:tracking-tight">
+        <h1 className="text-[7vw] font-semibold leading-tight tracking-tighter text-white mix-blend-exclusion sm:text-[3vw] sm:tracking-tight">
           <TextUp>{title}</TextUp>
         </h1>
       </SectionWrapper>
+      {extra && <SectionWrapper className="z-1">{extra}</SectionWrapper>}
     </header>
   );
 }

@@ -22,6 +22,8 @@ import {
 } from "@repo/form-ui/ui/form";
 import { Input } from "@repo/form-ui/ui/input";
 import { Textarea } from "@repo/form-ui/ui/textarea";
+import { ThemeModeToggle } from "@repo/form-ui/ui/theme-mode-toggle";
+import { useTheme } from "next-themes";
 
 const formSchema = z.object({
   slug: z.string().min(1, { message: "Slug required." }).regex(/^\S*$/, {
@@ -49,6 +51,7 @@ export type ContentFormProps = {
 };
 
 export function ContentForm({ defaulValues, createContent }: ContentFormProps) {
+  const { setTheme } = useTheme();
   const form = useForm<ContentFromSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: defaulValues || {
@@ -118,6 +121,17 @@ export function ContentForm({ defaulValues, createContent }: ContentFormProps) {
             <Button type="submit">Submit</Button>
           </form>
         </Form>
+        <ThemeModeToggle
+          onDarkClick={() => {
+            setTheme("dark");
+          }}
+          onLightClick={() => {
+            setTheme("light");
+          }}
+          onSystemClick={() => {
+            setTheme("system");
+          }}
+        />
       </ResizablePanel>
     </ResizablePanelGroup>
   );

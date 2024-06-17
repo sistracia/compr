@@ -1,3 +1,5 @@
+"use server";
+
 import sql from "@/lib/db";
 import { Content } from "@/types/content";
 

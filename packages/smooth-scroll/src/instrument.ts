@@ -88,3 +88,7 @@ export function listenInternalLink(
     });
   };
 }
+
+export function instrumentHorizontalScroll(container: HTMLElement) {
+  console.log(container);
+}

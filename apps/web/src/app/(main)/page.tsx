@@ -1,10 +1,17 @@
+import { ButtonLink } from "@repo/hugof-ui/button-link";
 import { HomePage } from "@repo/hugof-ui/home-page";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <HomePage
       title={
         "Website & Mobile Application Creation Services\nProvide Digital Solutions for Your Business."
+      }
+      headerExtra={
+        <ButtonLink as={Link} href="/service">
+          See Website Creation Service Packages
+        </ButtonLink>
       }
       sliderContents={[
         <div key="1" className="h-full bg-white"></div>,

@@ -13,7 +13,9 @@ export default async function MainLayout({
 
   return (
     <NavBar
+      titleAs={Link}
       title="hugof"
+      href="/"
       navbarContent={
         <NavList
           mainMenu={{
