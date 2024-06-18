@@ -3,7 +3,7 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { cn } from "@repo/utils";
 import { useState } from "react";
-import { HorizontalScroll } from "@repo/smooth-scroll/horizontal-scroll";
+import { HorizontalScroll } from "@repo-x/smooth-scroll/horizontal-scroll";
 
 export type ImageSliderProps = {
   contents: React.ReactNode[];

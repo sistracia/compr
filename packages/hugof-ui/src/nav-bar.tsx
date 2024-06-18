@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowUpIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { PageScroll } from "@repo/smooth-scroll/page-scroll";
-import { TopNavbar } from "@repo/smooth-scroll/top-navbar";
+import { PageScroll } from "@repo-x/smooth-scroll/page-scroll";
+import { TopNavbar } from "@repo-x/smooth-scroll/top-navbar";
 import { useState } from "react";
 import { SectionWrapper } from "./section-wrapper";
 import { cn } from "@repo/utils";
