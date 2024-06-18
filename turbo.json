@@ -3,7 +3,6 @@
   "globalDependencies": ["**/.env.*local"],
   "tasks": {
     "build": {
-      "env": ["DB_HOST", "DB_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD"],
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
@@ -17,5 +16,15 @@
       "cache": false,
       "persistent": true
     }
-  }
+  },
+  "globalEnv": [
+    "DB_HOST",
+    "DB_PORT",
+    "DB_NAME",
+    "DB_USER",
+    "DB_PASSWORD",
+    "NODE_ENV",
+    "GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET"
+  ]
 }

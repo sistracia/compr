@@ -1,0 +1,34 @@
+{
+  "name": "lucia-auth",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "migrate": "node --env-file=./.env.local --experimental-default-type=module ./migrate.js"
+  },
+  "dependencies": {
+    "@lucia-auth/adapter-postgresql": "^3.1.2",
+    "arctic": "^1.9.1",
+    "install": "^0.13.0",
+    "lucia": "^3.2.0",
+    "next": "14.2.4",
+    "oslo": "^1.2.0",
+    "postgres": "^3.4.4",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8.57.0",
+    "postgres-shift": "^0.1.0",
+    "typescript": "^5"
+  }
+}
