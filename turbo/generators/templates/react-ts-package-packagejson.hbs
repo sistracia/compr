@@ -2,7 +2,10 @@
   "name": "@repo/{{dashCase package}}",
   "version": "0.0.0",
   "private": true,
-  "exports": "./src/index.tsx",
+  "exports": {
+    "./*.ts": "./src/*.ts",
+    "./*.tsx": "./src/*.tsx"
+  },
   "license": "MIT",
   "scripts": { 
     "lint": "eslint --max-warnings 0 src/",
