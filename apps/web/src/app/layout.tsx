@@ -1,9 +1,11 @@
 import { ThemeProvider } from "@/components/theme-provider";
+import "./globals.css";
 import "@repo/form-ui/styles.css";
 import "@repo/hugof-ui/styles.css";
+import "@repo/smooth-scroll/styles.css";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,21 +29,20 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
           <div className="fixed top-0 z-[9999] w-full bg-yellow-100 text-black">
             <p>
-              This{" "}
               <a
                 href="https://hugaf.com"
                 target="_blank"
                 rel="noreferrer noopener nofollow"
                 className="text-sky-600"
               >
-                Hugaf
+                hugaf
               </a>{" "}
-              web clone is made for learning purpose by cloning.
+              web clone, clonned for learning purpose.
             </p>
           </div>
+          {children}
         </ThemeProvider>
       </body>
     </html>

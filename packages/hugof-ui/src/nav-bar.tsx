@@ -1,11 +1,12 @@
 "use client";
 
 import { ArrowUpIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { PageScroll } from "@repo-x/smooth-scroll/page-scroll";
-import { TopNavbar } from "@repo-x/smooth-scroll/top-navbar";
-import { useState } from "react";
-import { SectionWrapper } from "./section-wrapper";
+import { listenInternalLink } from "@repo/smooth-scroll/core";
+import { Lenis } from "@repo/smooth-scroll/lenis";
+import { PageScroll } from "@repo/smooth-scroll/react/page-scroll";
 import { cn } from "@repo/utils";
+import { useEffect, useRef, useState } from "react";
+import { SectionWrapper } from "./section-wrapper";
 
 export type NavBarProps<T extends React.ElementType = "a"> = Omit<
   React.ComponentPropsWithoutRef<T>,
@@ -27,30 +28,34 @@ export function NavBar<T extends React.ElementType = "a">(
     title,
     ...titleProps
   } = props;
+  const lenis = useRef<Lenis>(null);
+  const navContainerRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
 
-  const navbarOnLinkClick = () => {
-    setOpen(false);
+  const onToggle = () => {
+    if (open) {
+      lenis.current?.start();
+      setOpen(false);
+    } else {
+      lenis.current?.stop();
+      setOpen(true);
+    }
   };
 
-  const onToggle = () => {
-    setOpen(!open);
-  };
+  useEffect(() => {
+    const navContainer = navContainerRef.current;
+    if (navContainer === null) {
+      return;
+    }
+
+    return listenInternalLink(navContainer, () => {
+      setOpen(false);
+    });
+  }, []);
 
   return (
-    <PageScroll
-      navbar={TopNavbar}
-      navbarOpen={open}
-      navbarOnLinkClick={navbarOnLinkClick}
-      transform="500ms linear"
-      navbarClassName="fixed z-[1] flex w-full items-center justify-between overflow-scroll bg-neutral-800 text-white transition-transform duration-500 sm:h-[60vh]"
-      className="transition-transform duration-500"
-      navbarContent={
-        <SectionWrapper className="h-full pt-[90px]">
-          {navbarContent}
-        </SectionWrapper>
-      }
-      navbarBar={
+    <>
+      <nav ref={navContainerRef}>
         <SectionWrapper
           inset={true}
           className="fixed top-[2vw] z-[2] flex items-center justify-between text-white mix-blend-exclusion"
@@ -105,9 +110,20 @@ export function NavBar<T extends React.ElementType = "a">(
             )}
           </button>
         </SectionWrapper>
-      }
-    >
-      {children}
-    </PageScroll>
+        <div
+          className={cn(
+            "fixed z-[1] h-full w-full transition-transform duration-500",
+            open ? "translate-y-0" : "-translate-y-full",
+          )}
+        >
+          <div className="flex h-full w-full items-center justify-between overflow-scroll bg-neutral-800 text-white sm:h-[60vh]">
+            <SectionWrapper className="h-full pt-[90px]">
+              {navbarContent}
+            </SectionWrapper>
+          </div>
+        </div>
+      </nav>
+      <PageScroll ref={lenis}>{children}</PageScroll>
+    </>
   );
 }

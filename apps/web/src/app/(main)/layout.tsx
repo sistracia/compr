@@ -1,4 +1,5 @@
 import { getAllContents } from "@/actions/content";
+import { ActionBanner } from "@/components/action-banner";
 import { NavBar } from "@repo/hugof-ui/nav-bar";
 import { NavList } from "@repo/hugof-ui/nav-list";
 import { TextLink } from "@repo/hugof-ui/text-link";
@@ -36,11 +37,11 @@ export default async function MainLayout({
       }
     >
       {children}
-      <div className="w-full border-t-2 border-black bg-white p-1">
+      <ActionBanner>
         <Link href="/home/edit">
           <TextLink compact>Edit this Page</TextLink>
         </Link>
-      </div>
+      </ActionBanner>
     </NavBar>
   );
 }
